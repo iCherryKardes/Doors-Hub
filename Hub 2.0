@@ -707,7 +707,7 @@ end,
 })
 
 local PlamenDoorsButton = GuisTab:CreateButton({
-    Name = "Plamen's Doors GUI"
+    Name = "Plamen's Doors GUI",
     Callback = function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/plamen6789/DoorsEntitySummonerGUI/main/EntityGUI'))()
 end,
