@@ -1,0 +1,135 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("iCherryKardes's Doors Hub - Mobile", "Synapse")
+    -- MAIN
+    local Main = Window:NewTab("Main")
+    local Credits = Window:NewTab("Credits")
+    local MainSection = Main:NewSection("Some entities and feature might not enabled on mobile, all buttons are on one tab.")
+ 
+ 
+ 
+MainSection:NewButton("Spawn Ambush", "Spawns Ambush.", function()
+local EntitySpawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/dreadmania/Scripts/main/Spawner_V2.lua"))()
+local Configuration = {
+    Kill = true, -- change to "Damage = 10," for eyes, doesnt work on other entities
+    Speed = 160, -- 60 for rush, doesnt work on other entities
+    Time = 3 -- 5 for rush, doesnt work on other entities
+}
+
+EntitySpawner:Spawn("Ambush", Configuration)
+    end)
+ 
+MainSection:NewButton("Spawn Screech", "Spawns Screech, doesnt deal any damage.", function()
+local EntitySpawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/dreadmania/Scripts/main/Spawner_V2.lua"))()
+local Configuration = {
+    Kill = true, -- change to "Damage = 10," for eyes, doesnt work on other entities
+    Speed = 160, -- 60 for rush, doesnt work on other entities
+    Time = 3 -- 5 for rush, doesnt work on other entities
+}
+
+EntitySpawner:Spawn("Screech", Configuration)
+    end)
+ 
+MainSection:NewButton("Spawn Rush", "Spawns Rush.", function()
+local EntitySpawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/dreadmania/Scripts/main/Spawner_V2.lua"))()
+local Configuration = {
+    Kill = true, -- change to "Damage = 10," for eyes, doesnt work on other entities
+    Speed = 60, -- 60 for rush, doesnt work on other entities
+    Time = 5 -- 5 for rush, doesnt work on other entities
+}
+
+EntitySpawner:Spawn("Rush", Configuration)
+    end)
+ 
+MainSection:NewButton("Spawn Halt", "Spawns Halt at Latest Room.", function()
+local EntitySpawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/dreadmania/Scripts/main/Spawner_V2.lua"))()
+local Configuration = {
+    Kill = true, -- change to "Damage = 10," for eyes, doesnt work on other entities
+    Speed = 160, -- 60 for rush, doesnt work on other entities
+    Time = 3 -- 5 for rush, doesnt work on other entities
+}
+
+EntitySpawner:Spawn("Halt", Configuration)
+    end)
+
+MainSection:NewButton("Spawn Glitch", "Spawns Glitch, it might glitch the room you're in if you spam it..", function()
+local EntitySpawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/dreadmania/Scripts/main/Spawner_V2.lua"))()
+local Configuration = {
+    Kill = true, -- change to "Damage = 10," for eyes, doesnt work on other entities
+    Speed = 160, -- 60 for rush, doesnt work on other entities
+    Time = 3 -- 5 for rush, doesnt work on other entities
+}
+
+EntitySpawner:Spawn("Glitch", Configuration)
+    end)
+
+MainSection:NewButton("Spawn Hallway Jack", "Spawns Hallway Jack at the Latest Room.", function()
+local EntitySpawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/dreadmania/Scripts/main/Spawner_V2.lua"))()
+local Configuration = {
+    Kill = true, -- change to "Damage = 10," for eyes, doesnt work on other entities
+    Speed = 160, -- 60 for rush, doesnt work on other entities
+    Time = 3 -- 5 for rush, doesnt work on other entities
+}
+
+EntitySpawner:Spawn("Jack", Configuration)
+    end)
+
+MainSection:NewButton("Spawn Eyes", "Spawns Eyes at Latest Room, it will deal More Damage if you spam it.", function()
+local EntitySpawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/dreadmania/Scripts/main/Spawner_V2.lua"))()
+local Configuration = {
+    Damage = 10, -- change to "Damage = 10," for eyes, doesnt work on other entities
+    Speed = 160, -- 60 for rush, doesnt work on other entities
+    Time = 3 -- 5 for rush, doesnt work on other entities
+}
+
+EntitySpawner:Spawn("Eyes", Configuration)
+    end)
+
+MainSection:NewButton("Spawn Seek Eyes", "Spawns Seek Eyes at the Current Room.", function()
+require(game:GetService("ReplicatedStorage").ClientModules.EntityModules.Seek).tease(nil, workspace.CurrentRooms:WaitForChild(game.ReplicatedStorage.GameData.LatestRoom.Value), 14, 1665596753, true)
+    end)
+
+
+MainSection:NewButton("Spawn Seek", "Spawns Seek at Latest Room. Sometimes you chase him sometimes he chases you.", function()
+local EntitySpawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/dreadmania/Scripts/main/Spawner_V2.lua"))()
+local Configuration = {
+    Kill = true, -- change to "Damage = 10," for eyes, doesnt work on other entities
+    Speed = 160, -- 60 for rush, doesnt work on other entities
+    Time = 3 -- 5 for rush, doesnt work on other entities
+}
+
+EntitySpawner:Spawn("Seek", Configuration)
+    end)
+
+local MainSection = Main:NewSection("Mods")
+
+MainSection:NewButton("Thanksgiving Event", "Puts a Turkey Leg on tables, gives you Turkey Leg.", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ZepsyyCodesLUA/Utilities/main/DOORSthanksgiving"))()
+    end)
+
+local MainSection = Main:NewSection("Events")
+
+MainSection:NewButton("Heartbeat Minigame", "Starts Heartbeat Minigame, doesnt deal any damage.", function()
+firesignal(game.ReplicatedStorage.Bricks.ClutchHeartbeat.OnClientEvent)
+    end)
+
+MainSection:NewButton("Get All Achievements", "Gives you all achievements.", function()
+for i,v in pairs(require(game.ReplicatedStorage.Achievements)) do
+    spawn(function()
+        require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.AchievementUnlock)(nil, i)
+    end)
+end
+    end)
+	
+MainSection:NewButton("Break Lights", "Breaks the Lights on Latest Room.", function()
+firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "breakLights", workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value], 0.416, 60) 
+    end)
+
+MainSection:NewButton("Flicker Lights", "Flickers the Lights on Latest Room.", function()
+firesignal(game.ReplicatedStorage.Bricks.UseEventModule.OnClientEvent, "flickerLights", game.ReplicatedStorage.GameData.LatestRoom.Value, 1) 
+    end)
+
+local CreditsSection = Credits:NewSection("Owner of the hub is iCherryKardess#0001")
+
+local CreditsSection = Credits:NewSection("Dreadmania: Entities, Events")
+
+local CreditsSection = Credits:NewSection("Zepsyy: Thanksgiving")
